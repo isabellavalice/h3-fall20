@@ -16,7 +16,7 @@ class Animal_Fact_Generator:
     # it sets this object's animal_list (instance variable) to the passed list of animals
     # it sets this object's fact_history_list to an empty list (instance variable)
     def __init__(self, fact_list, animal_list):
-        self.fact_list = fact_lis
+        self.fact_list = fact_list
         self.animal_list = animal_list
         self.fact_history_list = []
     
