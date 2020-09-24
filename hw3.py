@@ -1,7 +1,7 @@
-# Your name:
-# Your student id:
-# Your email:
-# List who you have worked with on this homework:
+# Your name: Isabella Valice
+# Your student id: 
+# Your email:ivalice@umich.edu
+# List who you have worked with on this homework: Orli Forster, Margeaux Fortin
 
 # import the random module for use in this program
 import random
@@ -15,17 +15,29 @@ class Animal_Fact_Generator:
     # it sets this object's fact_list (instance variable) to the passed list of facts
     # it sets this object's animal_list (instance variable) to the passed list of animals
     # it sets this object's fact_history_list to an empty list (instance variable)
+    def __init__(self, fact_list, animal_list):
+        self.fact_list = fact_lis
+        self.animal_list = animal_list
+        self.fact_history_list = []
     
     # create the __str__ method
     # It should return a string with all animals
     # in animal_list separated by commas
     # For example : "elephant, cat, wolf, giraffe, panda, tiger"
 
+    def __str__(self):
+        animals = ", ".join(self.animal_list)
+        return animals
+
     # create the random_fact method
     # it randomly picks an index from 0 to the number of items in the fact_list minus one
     # it adds that index to the end of the fact_history_list
     # it returns a string combining the fact and the animal at that index in this object's fact_list
     # "fact - animal"
+    def random_fact(self):
+        randomindex = random.randrange(0, (len(self.fact_list)))
+        self.fact_history_list.append(randomindex)
+        return  self.fact_list[randomindex] + " - " + self.animal_list[randomindex]
 
 
     # create the get_fact_for_animal method
@@ -34,12 +46,21 @@ class Animal_Fact_Generator:
     # if there exists a fact for that animal, it returns the fact
     # else it returns "Sorry! I do not have any facts for {name_of_animal}"
 
+    def get_fact_for_animal(self, animal_name):
+        if animal_name in self.animal_list:
+            ind = self.animal_list.index(animal_name)
+            return self.fact_list[ind]
+        else:
+            return "Sorry! I do not have any facts for " + animal_name
+
 
     # create the print_history method
     # prints "[index] fact - animal" for each of the indicies in the fact_history_list
     # from the first to the last with each on a single line
     # it does not return anything!
-
+    def print_history(self):
+        for index in self.fact_history_list:
+            print ("[" + str(index) + "] " + self.fact_list[index] + " - " + self.animal_list[index])
 
     # EXTRA POINTS
     # create the generate_n_facts method
@@ -100,8 +121,8 @@ def main():
 
     #EXTRA POINTS
     #Uncomment the lines below if you attempt the extra credit!
-     print("\nTesting generate_n_facts method with 200 facts")
-     print(fact_bot2.generate_n_facts(200))
+    #  print("\nTesting generate_n_facts method with 200 facts")
+    #  print(fact_bot2.generate_n_facts(200))
 
 
 # only run the main function if this file is being run (not imported)
